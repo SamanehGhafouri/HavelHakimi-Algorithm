@@ -44,8 +44,6 @@ def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, L
 	for vertex_key in vertices:
 		adjacency_list[vertex_key] = []
 
-	print("It's Havel Time!!!")
-
 	while True:
 		# finding the max number
 		m_index, m_value = find_max_index_in_list(sequence)
