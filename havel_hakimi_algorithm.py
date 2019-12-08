@@ -1,4 +1,4 @@
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 
 
 # find the max value in the list for giving a list of numbers return index and number
@@ -31,7 +31,12 @@ def find_n_max_index_in_list(n: int, sequence: List[int]) -> List[Tuple[int, int
 
 
 # An arrow -> indicates a return type will follow
-def hha(vertices: List[str], sequence: List[int]) -> Tuple[Dict[str, List[str]], bool]:
+def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, List[str]], bool]:
+
+	if vertices is None or len(vertices) < len(sequence):
+		vertices = []
+		for index in range(len(sequence)):
+			vertices.append(f"V_{index + 1}")
 
 	is_graphic = True
 	adjacency_list: Dict[str, List[str]] = {}
