@@ -38,18 +38,20 @@ def find_n_max_index_in_list(n: int, sequence: List[int]) -> List[Tuple[int, int
 
 # An arrow -> indicates a return type will follow
 def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, List[str]], bool]:
-
+	# auto labaling of nodes
 	if vertices is None or len(vertices) < len(sequence):
 		vertices = []
 		for index in range(len(sequence)):
 			vertices.append(f"V_{index + 1}")
 
+	# initialazation
 	is_graphic = True
 	adjacency_list: Dict[str, List[str]] = {}
 	# initialize the adjacency list with empty list of neighbours
 	for vertex_key in vertices:
 		adjacency_list[vertex_key] = []
 
+	# basic hakimi check
 	if is_sum_of_sequence_odd(sequence):
 		is_graphic = False
 		return adjacency_list, is_graphic
