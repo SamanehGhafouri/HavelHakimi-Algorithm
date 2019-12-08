@@ -2,6 +2,7 @@ from unittest import TestCase
 from havel_hakimi_algorithm import hha
 from havel_hakimi_algorithm import find_max_index_in_list
 from havel_hakimi_algorithm import find_n_max_index_in_list
+from havel_hakimi_algorithm import is_sum_of_sequence_odd
 
 
 # test the code
@@ -80,6 +81,17 @@ class TestBasicHakimi(TestCase):
 
 		self.assertEqual(expected, actual)
 
+	def test_non_graphic_sequence_one(self):
+
+		expected = False
+		sequence = [4, 4, 3, 2]
+
+		vertices = ['A', 'B', 'C', 'D']
+
+		_, actual = hha(vertices, sequence)
+
+		self.assertEqual(expected, actual)
+
 	# test to find the max value function
 	def test_begin_max_value_from_sequence(self):
 		sequence = [4, 1, 2, 0]
@@ -119,4 +131,16 @@ class TestBasicHakimi(TestCase):
 		sequence = [0, 0, 1, 1, 1, 1, 0, 2, 1]
 		expected = [(7, 2), (2, 1)]
 		actual = find_n_max_index_in_list(2, sequence)
+		self.assertEqual(expected, actual)
+
+	def test_sum_of_sequence_is_odd(self):
+		sequence = [4, 4, 3, 2]
+		expected = True
+		actual = is_sum_of_sequence_odd(sequence)
+		self.assertEqual(expected, actual)
+
+	def test_sum_of_sequence_is_even(self):
+		sequence = [4, 4, 3, 2, 1]
+		expected = False
+		actual = is_sum_of_sequence_odd(sequence)
 		self.assertEqual(expected, actual)

@@ -1,6 +1,12 @@
 from typing import List, Dict, Tuple, Optional
 
 
+def is_sum_of_sequence_odd(sequence: List[int]):
+	if sum(sequence) % 2 != 0:
+		return True
+	return False
+
+
 # find the max value in the list for giving a list of numbers return index and number
 def find_max_index_in_list(sequence: List[int]) -> (int, int):
 
@@ -43,6 +49,10 @@ def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, L
 	# initialize the adjacency list with empty list of neighbours
 	for vertex_key in vertices:
 		adjacency_list[vertex_key] = []
+
+	if is_sum_of_sequence_odd(sequence):
+		is_graphic = False
+		return adjacency_list, is_graphic
 
 	while True:
 		# finding the max number
