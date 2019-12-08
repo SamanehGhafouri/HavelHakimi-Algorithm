@@ -25,10 +25,7 @@ def find_n_max_index_in_list(n: int, sequence: List[int]) -> List[Tuple[int, int
 		index, value = find_max_index_in_list(c_sequence)
 		result.append((index, value))
 
-		# index + 1 will include the index itself
-		for pre_index in range(0, index + 1):
-			# we already found it so it is equal to 0
-			c_sequence[pre_index] = 0
+		c_sequence[index] = 0
 
 	return result
 
@@ -51,6 +48,11 @@ def hha(vertices: List[str], sequence: List[int]) -> Tuple[Dict[str, List[str]],
 		if m_value == 0:
 			# stopping condition
 			break
+		if m_index == (len(sequence) - 1) and m_value != 0:
+			# we have reached the end of the sequence
+			# with vertices still needing to be connected
+			is_graphic = False
+			break
 		# update the sequence the max is now 0
 		sequence[m_index] = 0
 		list_of_max = find_n_max_index_in_list(m_value, sequence)
@@ -60,10 +62,8 @@ def hha(vertices: List[str], sequence: List[int]) -> Tuple[Dict[str, List[str]],
 			# decrement the max numbers
 			sequence[target_index] -= 1
 
-			# print(f"Vertex Pairs({vertices[m_index]}, {vertices[target_index]})")
 			neighbours = adjacency_list[vertices[m_index]]
-			# add a neighbour to the vertex at index m
-			neighbours.append(vertices[target_index])
+			neighbours.append(vertices[target_index])  # add a neighbour to the vertex at index m
 
 			neighbours = adjacency_list[vertices[target_index]]
 			neighbours.append(vertices[m_index])

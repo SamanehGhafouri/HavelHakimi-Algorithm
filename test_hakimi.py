@@ -44,6 +44,20 @@ class TestBasicHakimi(TestCase):
 		# check if the expected is equal to actual
 		self.assertEqual(expected, actual)
 
+	def test_graphic_sequence_two(self):
+
+		# adjacency list that we expect
+		expected = True
+		sequence = [4, 3, 2, 2, 1]
+
+		# returning the keys and sort them
+		vertices = ['A', 'B', 'C', 'D', 'E']
+
+		_, actual = hha(vertices, sequence)
+
+		# check if the expected is equal to actual
+		self.assertEqual(expected, actual)
+
 	def test_non_graphic_sequence_one(self):
 
 		expected = False
@@ -99,4 +113,10 @@ class TestBasicHakimi(TestCase):
 		sequence = [0, 3, 2, 1, 1, 2, 2, 1]
 		expected = [(1, 3), (2, 2), (5, 2), (6, 2)]
 		actual = find_n_max_index_in_list(4, sequence)
+		self.assertEqual(expected, actual)
+
+	def test_2_max_values_from_sequence_out_of_order(self):
+		sequence = [0, 0, 1, 1, 1, 1, 0, 2, 1]
+		expected = [(7, 2), (2, 1)]
+		actual = find_n_max_index_in_list(2, sequence)
 		self.assertEqual(expected, actual)
