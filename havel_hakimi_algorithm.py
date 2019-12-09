@@ -38,13 +38,13 @@ def find_n_max_index_in_list(n: int, sequence: List[int]) -> List[Tuple[int, int
 
 # An arrow -> indicates a return type will follow
 def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, List[str]], bool]:
-	# auto labaling of nodes
+	# auto labeling of nodes
 	if vertices is None or len(vertices) < len(sequence):
 		vertices = []
 		for index in range(len(sequence)):
 			vertices.append(f"V_{index + 1}")
 
-	# initialazation
+	# initialization
 	is_graphic = True
 	adjacency_list: Dict[str, List[str]] = {}
 	# initialize the adjacency list with empty list of neighbours
@@ -63,11 +63,14 @@ def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, L
 		if m_value == 0:
 			# stopping condition
 			break
-		if m_index == (len(sequence) - 1) and m_value != 0:
-			# we have reached the end of the sequence
-			# with vertices still needing to be connected
-			is_graphic = False
-			break
+
+		# TODO: Consider removing this logic since test pass without it
+		# if m_index == (len(sequence) - 1) and m_value != 0:
+		# 	# we have reached the end of the sequence
+		# 	# with vertices still needing to be connected
+		# 	is_graphic = False
+		# 	break
+
 		# update the sequence the max is now 0
 		sequence[m_index] = 0
 		list_of_max = find_n_max_index_in_list(m_value, sequence)

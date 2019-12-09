@@ -59,6 +59,20 @@ class TestBasicHakimi(TestCase):
 		# check if the expected is equal to actual
 		self.assertEqual(expected, actual)
 
+	def test_graphic_sequence_3(self):
+
+		# adjacency list that we expect
+		expected = True
+		sequence = [3, 3, 3, 3, 3, 3, 2, 2]
+
+		# returning the keys and sort them
+		vertices = ['A', 'B', 'C', 'D', 'E']
+
+		_, actual = hha(vertices, sequence)
+
+		# check if the expected is equal to actual
+		self.assertEqual(expected, actual)
+
 	def test_non_graphic_sequence_one(self):
 
 		expected = False
@@ -81,7 +95,7 @@ class TestBasicHakimi(TestCase):
 
 		self.assertEqual(expected, actual)
 
-	def test_non_graphic_sequence_one(self):
+	def test_non_graphic_sequence_3(self):
 
 		expected = False
 		sequence = [4, 4, 3, 2]
@@ -140,7 +154,45 @@ class TestBasicHakimi(TestCase):
 		self.assertEqual(expected, actual)
 
 	def test_sum_of_sequence_is_even(self):
-		sequence = [4, 4, 3, 2, 1]
+		sequence = [3, 3, 3, 3, 3, 3, 2, 2]
 		expected = False
 		actual = is_sum_of_sequence_odd(sequence)
 		self.assertEqual(expected, actual)
+
+	def test_barnoy_req_2_by_n(self):
+
+		n_sequence = [6, 7, 8, 9, 10, 11, 12]
+		for n in n_sequence:
+			sequence = [2] * n
+			expected = True
+			_, actual = hha(None, sequence)
+			with self.subTest():
+
+				# check if the expected is equal to actual
+				self.assertEqual(expected, actual)
+
+	def test_barnoy_req_3_by_n(self):
+
+		n_sequence = [4, 6, 8, 10, 12, 14, 16]
+		for n in n_sequence:
+			sequence = [3] * n
+			expected = True
+			_, actual = hha(None, sequence)
+			with self.subTest():
+
+				# check if the expected is equal to actual
+				self.assertEqual(expected, actual)
+
+	def test_barnoy_req_k_by_n(self):
+
+		k_sequence = [1, 2, 3, 4, 5, 6]
+		n_sequence = [2, 4, 6, 8, 10, 12]
+		for index in range(0, len(k_sequence)):
+			sequence = [k_sequence[index]] * n_sequence[index]
+			print(sequence)
+			expected = True
+			_, actual = hha(None, sequence)
+			with self.subTest():
+				# check if the expected is equal to actual
+				self.assertEqual(expected, actual)
+
