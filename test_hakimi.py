@@ -159,6 +159,7 @@ class TestBasicHakimi(TestCase):
 		actual = is_sum_of_sequence_odd(sequence)
 		self.assertEqual(expected, actual)
 
+	# The first Task to test
 	def test_barnoy_req_2_by_n(self):
 
 		n_sequence = [6, 7, 8, 9, 10, 11, 12]
@@ -171,6 +172,7 @@ class TestBasicHakimi(TestCase):
 				# check if the expected is equal to actual
 				self.assertEqual(expected, actual)
 
+	# The second task test
 	def test_barnoy_req_3_by_n(self):
 
 		n_sequence = [4, 6, 8, 10, 12, 14, 16]
@@ -183,6 +185,7 @@ class TestBasicHakimi(TestCase):
 				# check if the expected is equal to actual
 				self.assertEqual(expected, actual)
 
+	# The third task test
 	def test_barnoy_req_k_by_n(self):
 
 		k_sequence = [1, 2, 3, 4, 5, 6]
@@ -195,4 +198,5 @@ class TestBasicHakimi(TestCase):
 			with self.subTest():
 				# check if the expected is equal to actual
 				self.assertEqual(expected, actual)
+				print("")
 
