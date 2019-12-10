@@ -3,6 +3,7 @@ from havel_hakimi_algorithm import hha
 from havel_hakimi_algorithm import find_max_index_in_list
 from havel_hakimi_algorithm import find_n_max_index_in_list
 from havel_hakimi_algorithm import is_sum_of_sequence_odd
+from havel_hakimi_algorithm import vertex_character_map
 
 from typing import List
 
@@ -25,6 +26,16 @@ class TestBasicHakimi(TestCase):
 
 		result.reverse()
 		return result
+
+	def test_character_map_first_value(self):
+		expected = "A"
+		actual = vertex_character_map(1)
+		self.assertEqual(expected, actual)
+
+	def test_character_map_last_value(self):
+		expected = "Z"
+		actual = vertex_character_map(26)
+		self.assertEqual(expected, actual)
 
 	def test_graphic_in_class_example_one(self):
 

@@ -1,5 +1,11 @@
 from typing import List, Dict, Tuple, Optional
 
+__character_map = {
+	1: "A", 2: "B", 3: "C", 4: "D", 5: "E", 6: "F", 7: "G", 8: "H", 9: "I", 10: "J", 11: "K", 12: "L", 13: "M",
+	14: "N", 15: "O", 16: "P", 17: "Q", 18: "R", 19: "S", 20: "T", 21: "U", 22: "V", 23: "W", 24: "X", 25: "Y",
+	26: "Z"
+}
+
 
 def is_sum_of_sequence_odd(sequence: List[int]) -> bool:
 	if sum(sequence) % 2 != 0:
@@ -36,13 +42,18 @@ def find_n_max_index_in_list(n: int, sequence: List[int]) -> List[Tuple[int, int
 	return result
 
 
+def vertex_character_map(key: int) -> str:
+	return __character_map[key]
+
+
 # An arrow -> indicates a return type will follow
 def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, List[str]], bool]:
 	# auto labeling of nodes
 	if vertices is None or len(vertices) < len(sequence):
 		vertices = []
 		for index in range(len(sequence)):
-			vertices.append(f"V_{index + 1}")
+			character = vertex_character_map(index + 1)
+			vertices.append(character)
 
 	# initialization
 	is_graphic = True
