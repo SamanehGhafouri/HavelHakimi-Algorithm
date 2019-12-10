@@ -4,9 +4,27 @@ from havel_hakimi_algorithm import find_max_index_in_list
 from havel_hakimi_algorithm import find_n_max_index_in_list
 from havel_hakimi_algorithm import is_sum_of_sequence_odd
 
+from typing import List
+
 
 # test the code
 class TestBasicHakimi(TestCase):
+
+	# Test Helper
+	def is_sequence_sum_for_task_four_odd(self, sequence: List[int]) -> bool:
+		return is_sum_of_sequence_odd(sequence)
+
+	# Test Helper
+	def sequence_for_task_four(self, n: int, i: int):
+
+		result = []
+		for val in range(1, n):
+			result.append(val)
+			if i == val:
+				result.append(val)
+
+		result.reverse()
+		return result
 
 	def test_graphic_in_class_example_one(self):
 
@@ -192,11 +210,27 @@ class TestBasicHakimi(TestCase):
 		n_sequence = [2, 4, 6, 8, 10, 12]
 		for index in range(0, len(k_sequence)):
 			sequence = [k_sequence[index]] * n_sequence[index]
-			print(sequence)
 			expected = True
 			_, actual = hha(None, sequence)
 			with self.subTest():
 				# check if the expected is equal to actual
 				self.assertEqual(expected, actual)
-				print("")
+
+	def test_barnoy_task_four(self):
+
+		n_sequence = [6, 7, 8, 9]
+		i_sequence_end = [5, 6, 7, 8]
+		for n_index in range(0, len(n_sequence)):
+			n = n_sequence[n_index]
+			i_sequence = [x for x in range(1, i_sequence_end[n_index] + 1)]
+			for i in i_sequence:
+				sequence = self.sequence_for_task_four(n, i)
+				expected = not self.is_sequence_sum_for_task_four_odd(sequence)
+				_, actual = hha(None, sequence)
+				with self.subTest():
+					# check if the expected is equal to actual
+					self.assertEqual(expected, actual)
+
+
+
 

@@ -1,7 +1,7 @@
 from typing import List, Dict, Tuple, Optional
 
 
-def is_sum_of_sequence_odd(sequence: List[int]):
+def is_sum_of_sequence_odd(sequence: List[int]) -> bool:
 	if sum(sequence) % 2 != 0:
 		return True
 	return False
