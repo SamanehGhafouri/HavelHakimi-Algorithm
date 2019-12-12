@@ -15,7 +15,7 @@ def main_ui_logic():
     # user post prompt logic
     if is_graphic:
         print(f"The provided sequence is GRAPHIC!!! Yay.")
-        display_graphic_graph(adjacency_lst)
+        display_graphic_graph(adjacency_lst, sequence)
     else:
         print(f"The degree sequence, {sequence}, is not graphic. :(")
 

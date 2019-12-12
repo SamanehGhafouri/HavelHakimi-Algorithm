@@ -46,7 +46,7 @@ def vertex_character_map(key: int) -> str:
 	return __character_map[key]
 
 
-# An arrow -> indicates a return type will follow
+# An arrow -> indicates a return type will follow! returning an adjecency list and info if its graphic or not
 def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, List[str]], bool]:
 	# auto labeling of nodes
 	if vertices is None or len(vertices) < len(sequence):
@@ -75,13 +75,6 @@ def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, L
 			# stopping condition
 			break
 
-		# TODO: Consider removing this logic since test pass without it
-		# if m_index == (len(sequence) - 1) and m_value != 0:
-		# 	# we have reached the end of the sequence
-		# 	# with vertices still needing to be connected
-		# 	is_graphic = False
-		# 	break
-
 		# update the sequence the max is now 0
 		sequence[m_index] = 0
 		list_of_max = find_n_max_index_in_list(m_value, sequence)
@@ -91,6 +84,7 @@ def hha(vertices: Optional[List[str]], sequence: List[int]) -> Tuple[Dict[str, L
 			# decrement the max numbers
 			sequence[target_index] -= 1
 
+			# building the adjacency list of numbers
 			neighbours = adjacency_list[vertices[m_index]]
 			neighbours.append(vertices[target_index])  # add a neighbour to the vertex at index m
 

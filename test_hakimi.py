@@ -218,9 +218,11 @@ class TestBasicHakimi(TestCase):
 	def test_barnoy_req_k_by_n(self):
 
 		k_sequence = [1, 2, 3, 4, 5, 6]
-		n_sequence = [2, 4, 6, 8, 10, 12]
-		for index in range(0, len(k_sequence)):
-			sequence = [k_sequence[index]] * n_sequence[index]
+		for k in k_sequence:
+			sequence = []
+			while k > 0:
+				sequence.extend([k]*2)
+				k = k - 1
 			expected = True
 			_, actual = hha(None, sequence)
 			with self.subTest():
