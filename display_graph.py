@@ -10,7 +10,6 @@ def display_graphic_graph(adjacency_list: Dict[str, List[str]], sequence: List[i
 
     G = nx.to_networkx_graph(adjacency_list)
     nx.draw(G, with_labels=True, font_weight='bold')
-    plt.title(f'{sequence}')
     plt.show()
-
+    plt.title(f'{sequence}')
     # plt.savefig(f'{sequence}.png', bbox_inches='tight')
